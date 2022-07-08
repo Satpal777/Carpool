@@ -17,7 +17,7 @@ app.controller('publishRideCtrl', function ($scope, $http, $rootScope, $location
    
     $scope.tosearching = () => {
         var prsearchresult = [];
-        $http.get(`https://api.geoapify.com/v1/geocode/autocomplete?text=${$scope.prsearch}&apiKey=['YOUR_API_KEY]`).then((res) => {
+        $http.get(`https://api.geoapify.com/v1/geocode/autocomplete?text=${$scope.prsearch}&apiKey=[YOUR_API_KEY]`).then((res) => {
             for (let i = 0; i < res.data.features.length; i++) {
                 prsearchresult.push({
                     address: res.data.features[i].properties.formatted,
