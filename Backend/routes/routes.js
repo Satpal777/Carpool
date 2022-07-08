@@ -53,7 +53,4 @@ router.get('/get-sharedridesById', SharedRidesController.get_sharedride_by_id);
 
 router.delete('/delete-sharedrides', SharedRidesController.delete_sharedride);
 
-
-
-
 module.exports = router;
