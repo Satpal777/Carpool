@@ -7,15 +7,9 @@ const RidesController = require("../controllers/rides");
 
 const SharedRidesController = require("../controllers/sharedrides")
 
-const AdminController = require("../controllers/admin")
-
 router.get('/', (req, res) => {
     res.send('Welcome Students')
 });
-
-//auth
-
-router.post('/auth', AdminController.auth_admin);
 
 //  User APIs
 
