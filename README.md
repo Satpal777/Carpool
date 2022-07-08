@@ -23,3 +23,18 @@ It is a car pool website made using MongoDB, Express.js, AngularJs and NodeJs
 - Leafet-Routing-Machine
 
 # Screenshots
+
+## Login Page
+![Output](/Screenshots/screenshot1.jpeg)
+
+## Home Page
+![Output](/Screenshots/screenshot2.jpeg)
+
+## Publish Rides Page
+![Output](/Screenshots/screenshot.jpeg)
+
+## Search Rides Page
+![Output](/Screenshots/screenshot4.jpeg)
+
+## Detail of Ride Page
+![Output](/Screenshots/screenshot5.jpeg)
