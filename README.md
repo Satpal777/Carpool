@@ -31,7 +31,7 @@ It is a car pool website made using MongoDB, Express.js, AngularJs and NodeJs
 ![Output](/Screenshots/screenshot2.jpeg)
 
 ## Publish Rides Page
-![Output](/Screenshots/screenshot.jpeg)
+![Output](/Screenshots/screenshot3.jpeg)
 
 ## Search Rides Page
 ![Output](/Screenshots/screenshot4.jpeg)
