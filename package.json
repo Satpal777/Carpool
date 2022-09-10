@@ -2,15 +2,14 @@
   "name": "carpool",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
    "builds": [
     {
-      "src": "app.js",
-      "use": "@vercel/node"
+      "src": "index.js",
     }
   ],
   "keywords": [],
