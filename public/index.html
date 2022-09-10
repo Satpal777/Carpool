@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- MAP -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+  crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> -->
+
+<!-- Datatables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+</link>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+  <!-- Navbar -->
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap  pt-3 p-5 flex-col md:flex-row items-center">
+      <a class="flex justify-start title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <img src="/images/car-sharing.png" class="h-10" alt="icon">
+        <span class="px-2 ml-3 text-xl">Carpool</span>
+      </a>
+      <nav
+        class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-between">
+        <a href="#!" class="md:mr-5 cursor-pointer hover:text-gray-900">Home</a>
+        <a href="#!searchRides" class="md:mr-5 cursor-pointer hover:text-gray-900">Search Ride</a>
+        <a href="#!publishRides" class="md:mr-5 cursor-pointer hover:text-gray-900">Publish Ride</a>
+        <a href="#!myrides" class="md:mr-5 cursor-pointer hover:text-gray-900">My Rides</a>
+        <a href="#!aboutUs" class="md:mr-5 cursor-pointer hover:text-gray-900">About Us</a>
+      </nav>
+
+      <!-- offcanvas -->
+      <div ng-show="loggedin" class="text-center inline-flex items-center border-0 px-3 f rounded text-base md:mt-0"
+        style="height:60px; overflow: hidden;">
+        <h5 ng-click="toggle()"
+          class="text-center text-xl font-medium leading-tight mx-2 rounded-md py-2 px-8 hover:ring-1 hover:ring-slate-200 hover:shadow-sm shadow-lg cursor-pointer shadow-blue-500/50 ">
+          {{username}}</h5>
+      </div>
+
+      <section ng-show="menu" class="border-2 border-slate-400 fixed inset-y-0 right-0 z-50 flex">
+        <div class="w-screen max-w-sm">
+          <div class="flex flex-col h-full divide-y divide-gray-200 bg-gray-50">
+            <div class="overflow-y-scroll">
+              <header class="flex items-center justify-between h-16 pl-6">
+                <span class="text-sm font-medium tracking-widest uppercase">
+                  User Profile
+                </span>
+
+                <button aria-label="Close menu" ng-click="toggle()" class="w-16 h-16 border-l border-gray-200"
+                  type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-auto" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </header>
+
+              <nav
+                class="flex flex-col text-sm font-medium text-gray-500 border-t border-b border-gray-200 divide-y divide-gray-200">
+                <a href="" class="px-6 py-3"> {{fn +" "+ ln}} </a>
+                <a href="" class="px-6 py-3">Email : <i>{{email}}</i> </a>
+                <a href="" class="px-6 py-3">Mobile no. : <i>{{mno}}</i> </a>
+              </nav>
+              <div class="flex items-center justify-between h-16 pl-6">
+                <span class="text-sm font-medium tracking-widest uppercase">
+                  Update Profile
+                </span>
+              </div>
+              <div
+                class="flex flex-col text-sm font-medium text-gray-500 border-t border-b border-gray-200 divide-y divide-gray-200">
+                <input class="px-4 py-1 m-2" ng-model="fn" type="text" style="border:1px solid gray" value="{{fn}}">
+                <input class="px-4 py-1 m-2" ng-model="ln" type="text" style="border:1px solid gray" value="{{ln}}">
+                <input class="px-4 py-1 m-2" ng-model="email" type="text" style="border:1px solid gray"
+                  value="{{email}}">
+                <input class="px-4 py-1 m-2" ng-model="mno" type="text" style="border:1px solid gray" value="{{mno}}">
+                <input class="px-4 py-1 m-2" ng-model="lno" type="text" style="border:1px solid gray" value="{{lno}}">
+                <button ng-click="updateProfile()" class="bg-slate-800 px-4 py-1 m-2 text-white">Submit</button>
+                <br>
+                <br>
+                <button ng-click="deactivateAccount()" class="px-4 py-1 m-2 bg-red-800 text-white">Deactivate
+                  Account</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <span ng-hide="loggedin" class="relative inline-flex">
+        <button type="button"
+          class="inline-flex items-center px-4 py-2 font-bold font-mono leading-6 text-xl shadow rounded-md text-sky-500 bg-sky-200 text-black  transition ease-in-out duration-150 ring-1 ring-slate-900/10 dark:ring-slate-200/20">
+          <a href="#!login">Login</a>
+        </button>
+        <span class="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+        </span>
+      </span>
+      <button ng-show="loggedin" type="button" ng-click="logout()"
+        class="inline-flex items-center px-4 py-2 font-bold font-mono leading-6 text-xl shadow rounded-md text-red-500 bg-red-200 text-black  transition ease-in-out duration-150 ring-1 ring-slate-900/10 dark:ring-slate-200/20">
+        Logout
+      </button>
+  </header>
+
+
+  <!-- Body -->
+  <!-- <p class="text-8xl text-center text-sky-500 p-4 font-medium">Carpool</p> -->
+  <div style="min-height: 77vh;" ng-view></div>
+
+  <!-- Footer -->
+
+  <footer class="text-gray-600 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <img src="/images/car-sharing.png" class="h-10" alt="icon">
+        </a>
+        <span class="ml-3 text-xl">Carpool</span>
+      </a>
+      <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2022
+        Carpool —
+        <a href="#" class="text-gray-600 ml-1" rel="noopener noreferrer"
+          target="_blank">Developed by @RanaSatpalsinh</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path
+              d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+            </path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/routes.js"></script>
+  <script src="js/maincontroller.js"></script>
+  <script src="js/aboutus.js"></script>
+  <script src="js/myrides.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/pr.js"></script>
+  <script src="js/sr.js"></script>
+  <script src="js/signup.js"></script>
+  <script src="js/requestride.js"></script>
+  <script src="js/rideinfo.js"></script>
+</body>
+
+</html>

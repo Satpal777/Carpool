@@ -1,0 +1,157 @@
+<div style="min-height: 88vh;">
+  <section class="mb-0 mt-0 m-10 p-2" id="ridestable">
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="flex md:flex-row flex-col gap-x-4 justify-items-center">
+            <div class="tab1 w-1/2">
+              <table class="min-w-full text-center">
+                <thead class="border-b bg-gray-800">
+                  <tr>
+                    <th scope="col" class="bg-green-500 text-white text-4xl text-sm font-medium text-white px-6 py-4"
+                      colspan="6">Published Rides</th>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="text-sm font-medium text-white px-3 py-2">
+                      #
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Starting location
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Destination
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Date
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Time
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Deatils
+                    </th>
+                  </tr>
+                </thead class="border-b">
+                <tbody>
+
+                <tr class="bg-white border-b" ng-repeat="x in myridepublished">
+
+                    <td class="px-3 py-2 whitespace-wrap text-sm font-medium text-gray-900">{{x.srnum+1}}</td>
+
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{x.from}}
+                    </td>
+
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{x.dest}}
+                    </td>
+
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{x.datetime | date:'dd-mm-yyyy'}}
+                    </td>
+
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{x.datetime | date:'h:mma'}}
+                    </td>
+                    <td><a class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap underline text-sky-600 cursor-pointer" href="#!/myrides/rideinfo/{{x.rid}}">Details</a></td>
+
+                  </tr class="bg-white border-b">
+
+                </tbody>
+              </table>
+
+            </div>
+
+            <img class="w-1/2 md:mx-0 mx-auto" src="/images/maplocation.svg" alt="">
+
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="mb-0 m-10 p-2" id="sharedridestable">
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="flex md:flex-row flex-col-reverse gap-x-4 justify-items-center">
+            
+        
+            <img  class="w-1/2 md:mx-0 mx-auto" src="/images/savemoney.jpg" alt="">
+            <div class="tab2 w-1/2">
+              <table class="min-w-full text-center">
+                <thead class="border-b bg-gray-800">
+                  <tr>
+                    <th scope="col" class="bg-red-500 text-white text-4xl text-sm font-medium text-white px-6 py-4"
+                      colspan="8">Requested Rides</th>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="text-sm font-medium text-white px-3 py-2">
+                      #
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Starting location
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Destination
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Name
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Email
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Mobile No.
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Date
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-white pr-3 py-2">
+                      Time
+                    </th>
+                  </tr>
+                </thead class="border-b">
+                <tbody>
+
+                  <tr class="bg-white border-b" ng-repeat="y in myreqsride">
+                    <td class="px-3 py-2 whitespace-wrap text-sm font-medium text-gray-900">{{y.srnum}}</td>
+
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{y.from}}
+                    </td>
+
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{y.dest}}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{y.name}}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{y.email}}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{y.mno}}
+                    </td>
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{y.datetime | date:'dd-mm-yyyy'}}
+                    </td>
+
+                    <td class="text-sm text-gray-900 font-light pr-3 py-2 whitespace-wrap">
+                      {{y.datetime | date:'h:mma'}}
+                    </td>
+
+                  </tr class="bg-white border-b">
+
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
