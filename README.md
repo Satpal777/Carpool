@@ -4,7 +4,7 @@ It is a car pool website made using MongoDB, Express.js, AngularJs and NodeJs
 
 ## 🚀 Tools and Technologies
 
-## Frontend
+
 
 - Tailwind CSS: Tailwind CSS is a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override.
 
@@ -23,18 +23,16 @@ It is a car pool website made using MongoDB, Express.js, AngularJs and NodeJs
 - Leafet-Routing-Machine
 
 # Screenshots
-
-## Login Page
-![Output](/Screenshots/screenshot1.jpeg)
+![screenshot1](https://user-images.githubusercontent.com/85938637/219848061-efa1d274-d2f7-44a0-a63f-d7dadf7beeef.jpeg)
 
 ## Home Page
-![Output](/Screenshots/screenshot2.jpeg)
+![screenshot2](https://user-images.githubusercontent.com/85938637/219848064-9eb0b305-ea2b-44f4-ad13-3fc645869bbe.jpeg)
 
 ## Publish Rides Page
-![Output](/Screenshots/screenshot3.jpeg)
+![screenshot3](https://user-images.githubusercontent.com/85938637/219848068-857b8ba4-8fc1-4c24-b127-8370c92333a7.jpeg)
 
 ## Search Rides Page
-![Output](/Screenshots/screenshot4.jpeg)
+![screenshot4](https://user-images.githubusercontent.com/85938637/219848071-8538e4c2-19c8-4bce-80b4-8d4b0f43fdd0.jpeg)
 
 ## Detail of Ride Page
-![Output](/Screenshots/screenshot5.jpeg)
+![screenshot5](https://user-images.githubusercontent.com/85938637/219848073-3d929f7e-9a9e-4983-bad7-ebe2bc5dc772.jpeg)
